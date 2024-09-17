@@ -1,0 +1,17 @@
+
+    Los Getters y Setters nos permiten leer y escribir (respectivamente) los valores
+    de nuestras variables privadas desde fuera de la clase donde fueron creadas.
+    Con los Getters obtenemos los datos de las variables y con los Setters asignamos o cambiamos su valor.
+    Los getters y setters se utilizan a menudo en combinación con la encapsulación en
+    Java para controlar el acceso a los atributos de una clase y garantizar que sean
+    utilizados de manera correcta.
+
+    ¿Que son los Getters?
+        Son métodos que permiten obtener el valor de un atributo, y
+        provienen del verbo inglés get que significa "obtener".
+        --get – una función sin argumentos, que funciona cuando se lee una propiedad.
+
+    ¿Qué son los Setters?
+     son métodos que permiten fijar el valor de una variable privada de una clase.
+
+     --set – una función con un argumento, que se llama cuando se establece la propiedad.

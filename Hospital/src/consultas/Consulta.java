@@ -1,8 +1,8 @@
 package consultas;
 
 import consultorios.Consultorio;
-import medicos.Medico;
-import pacientes.Paciente;
+import usuarios.medicos.Medico;
+import usuarios.pacientes.Paciente;
 
 import java.time.LocalDateTime;
 
@@ -13,7 +13,7 @@ public class Consulta {
     public Medico medico;
     public Consultorio consultorio;
 
-    public Consulta(String id,LocalDateTime fechaHora, Paciente paciente, Medico medico, Consultorio consultorio) {
+    public Consulta(String id, LocalDateTime fechaHora, Paciente paciente, Medico medico, Consultorio consultorio) {
         this.id = id;
         this.fechaHora = fechaHora;
         this.paciente = paciente;
@@ -22,8 +22,8 @@ public class Consulta {
     }
 
     //------------------------------ Métodos ---------------------------------
-    public String mostrarInformacion(){
-        return String.format("\nId: %s, Fecha: %s, Id paciente: %s, Nombre paciente: %d, Id médico: %s, Nombre médico: %s, Piso consultorio: %d, Num. Concultorio: %d",
+    public String mostrarInformacion() {
+        return String.format("\nId: %s, Fecha: %s, Id paciente: %s, Nombre paciente: %s, Id médico: %s, Nombre médico: %s, Piso consultorio: %d, Num. Concultorio: %d",
                 id,
                 fechaHora,
                 paciente.getId(),

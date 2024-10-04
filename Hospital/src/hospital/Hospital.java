@@ -2,8 +2,8 @@ package hospital;
 
 import consultas.Consulta;
 import consultorios.Consultorio;
-import medicos.Medico;
-import pacientes.Paciente;
+import usuarios.medicos.Medico;
+import usuarios.pacientes.Paciente;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -55,7 +55,7 @@ public class Hospital {
     public void mostrarPaciente() {
         System.out.println("\n*** PACIENTES DEL HOSPITAL ***");
         if (listaPacientes.isEmpty()) {
-            System.out.println("No hay pacientes registrados");
+            System.out.println("No hay usuarios.pacientes registrados");
         }else{
             for (Paciente paciente : this.listaPacientes) {
                 System.out.println(paciente.mostrarDatos());
@@ -77,7 +77,7 @@ public class Hospital {
     public void mostrarConsultorio(){
         System.out.println("\n*** CONSULTORIOS DEL HOSPITAL ***");
         if (listaConsultorios.isEmpty()) {
-            System.out.println("No hay pacientes registrados");
+            System.out.println("No hay usuarios.pacientes registrados");
         }else {
             for (Consultorio consultorio : this.listaConsultorios) {
                 System.out.println(consultorio.mostrarDatosConsultorio());
@@ -130,10 +130,11 @@ public class Hospital {
     public void mostrarConsultasMedicos(String id) {
         List<Consulta> consultasMedico = this.listaConsultas.stream()
                 .filter(consulta -> consulta.getMedico().getId().equals(id))
-                .collect(Collectors.toList());
+                .toList();
 
         if (consultasMedico.isEmpty()) {
             System.out.println("\nNo tiene consultas registradas.");
+            return;
         } else {
             System.out.println("\n*** Consultas del Médico ***");
             for (Consulta consulta : consultasMedico) {
@@ -146,11 +147,12 @@ public class Hospital {
         List<Paciente> pacientesMedico = this.listaConsultas.stream()
                 .filter(consulta -> consulta.getMedico().getId().equals(id))
                 .map(Consulta::getPaciente)
-                .distinct() // Para evitar pacientes duplicados en caso de múltiples consultas
-                .collect(Collectors.toList());
+                .distinct()
+                .toList();
 
         if (pacientesMedico.isEmpty()) {
-            System.out.println("\nNo tiene pacientes registrados.");
+            System.out.println("\nNo tiene usuarios.pacientes registrados.");
+            return;
         } else {
             System.out.println("\n*** PACIENTES DEL MÉDICO ***");
             for (Paciente paciente : pacientesMedico) {
@@ -162,10 +164,11 @@ public class Hospital {
     public void mostrarConsultasPacientes(String id) {
         List<Consulta> consultasPaciente = this.listaConsultas.stream()
                 .filter(consulta -> consulta.getPaciente().getId().equals(id))
-                .collect(Collectors.toList());
+                .toList();
 
         if (consultasPaciente.isEmpty()) {
             System.out.println("\nNo tiene consultas registradas.");
+            return;
         } else {
             System.out.println("\n*** Consultas del Paciente ***");
             for (Consulta consulta : consultasPaciente) {
@@ -229,7 +232,7 @@ public class Hospital {
 
     // -----------------Métodos para generar id´s----------------------------
     public String generarIdPaciente() {
-        // p -{año actual} - {mes actual} - {longitud pacientes +1} - {1,100000}
+        // p -{año actual} - {mes actual} - {longitud usuarios.pacientes +1} - {1,100000}
         LocalDate fecha = LocalDate.now();
 
         int anoActual = fecha.getYear();

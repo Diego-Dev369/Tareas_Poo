@@ -13,9 +13,9 @@ public class Consultorio {
         this.numeroConsultorio = numeroConsultorio;
     }
 
-    //-----------------Método para mostrar los datos del consultorio :v--------------
+    //-----------------Método para mostrar los datos del consultorio --------------
     public String mostrarDatosConsultorio() {
-        return String.format("Id: %s, Número de piso: %d, Número de consultorio: %s", id, piso, numeroConsultorio);
+        return String.format("Id: %s, Número de piso: %d, Número de consultorio: %d", id, piso, numeroConsultorio);
     }
 
 

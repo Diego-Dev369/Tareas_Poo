@@ -3,8 +3,8 @@ package menu;
 import consultas.Consulta;
 import consultorios.Consultorio;
 import hospital.Hospital;
-import medicos.Medico;
-import pacientes.Paciente;
+import usuarios.medicos.Medico;
+import usuarios.pacientes.Paciente;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -30,7 +30,7 @@ public class Menu {
                 2.- Salir""");
             System.out.print("Elija una opción: ");
             opc = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer
+            scanner.nextLine();
 
             switch (opc) {
                 case 1:
@@ -58,7 +58,7 @@ public class Menu {
                 4.- Salir""");
             System.out.print("Elija una opción: ");
             opc = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer
+            scanner.nextLine();
 
             switch (opc) {
                 case 1:
@@ -199,7 +199,11 @@ public class Menu {
                         }
                     }
 
-                    Paciente paciente = new Paciente(id, nombre,apellido,fechaNacimiento,tipoSangre,sexo,telefono);
+                    System.out.print("Ingrese la contrasenia del paciente: ");
+                    String contrasenaPaciente = scanner.nextLine();
+
+
+                    Paciente paciente = new Paciente(id, nombre, apellido, fechaNacimiento, tipoSangre, sexo, telefono, contrasenaPaciente);
                     hospital.registrarPaciente(paciente);
 
                     System.out.println("\nPaciente registrado exitosamente");
@@ -249,12 +253,16 @@ public class Menu {
                         }
                     }
 
-                    String anioCadena= String.valueOf(fechaNacimientoM.getYear());
+                    System.out.print("Ingrese la constrasenia del medico: ");
+                    String constraseniaMedico = scanner.nextLine();
+
+                    String anioCadena = String.valueOf(fechaNacimientoM.getYear());
 
                     String idMedico = hospital.generarIdMedico(apellidoM, anioCadena);
 
-                    Medico medico = new Medico(idMedico,nombreM, apellidoM, fechaNacimientoM,telefonoM,rfc);
+                    Medico medico = new Medico(idMedico, nombreM, apellidoM, fechaNacimientoM, telefonoM, rfc, constraseniaMedico);
                     hospital.registrarMedico(medico);
+
 
                     System.out.println("\nMédico registrado exitosamente");
                     break;
@@ -348,7 +356,7 @@ public class Menu {
                         }
                     }
 
-                    Consulta nuevaConsulta = new Consulta(idConsulta,fechaConsulta, pacienteConsulta , medicoConsulta, consultorioConsulta);
+                    Consulta nuevaConsulta = new Consulta(idConsulta, fechaConsulta, pacienteConsulta, medicoConsulta, consultorioConsulta);
 
                     hospital.registrarConsulta(nuevaConsulta, pacienteConsulta.getId());
 

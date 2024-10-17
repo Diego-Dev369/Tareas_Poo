@@ -8,6 +8,7 @@ import usuarios.medicos.Medico;
 import usuarios.pacientes.Paciente;
 import usuarios.Usuario;
 import utils.Rol;
+import utils.Status;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -104,9 +105,9 @@ public class Menu {
             System.out.print("\n--------Bienvenido/a--------\n");
             System.out.println("---Inicia sesión para continuar---");
 
+            scanner.nextLine();
             System.out.print("Ingrese su usuario: ");
             String usuario = scanner.nextLine();
-            scanner.nextLine();
 
             System.out.print("Ingrese su contraseña: ");
             String contrasena = scanner.nextLine();
@@ -360,7 +361,9 @@ public class Menu {
                         }
                     }
 
-                    Consulta nuevaConsulta = new Consulta(idConsulta, fechaConsulta, pacienteConsulta, medicoConsulta, consultorioConsulta);
+                    System.out.println();
+
+                    Consulta nuevaConsulta = new Consulta(idConsulta, fechaConsulta, pacienteConsulta, medicoConsulta, consultorioConsulta, Status.PENDIENTE);
                     if (hospital.validarConsulta(fechaConsulta, consultorioConsulta.piso , medicoConsulta.getId())) {
                         hospital.registrarConsulta(nuevaConsulta);
                         System.out.println("Consulta registrada correctamente.");
@@ -368,7 +371,6 @@ public class Menu {
                         System.out.println("No se pudo registrar la consulta. El consultorio o el médico no están disponibles en esa fecha.");
                     }
 
-                    System.out.println("Consulta exitosamente registrada");
                     break;
                 case 5:
                     hospital.mostrarPaciente();

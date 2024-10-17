@@ -15,7 +15,7 @@ public class Consulta {
     public Consultorio consultorio;
     public Status status;
 
-    public Consulta(String id, LocalDateTime fechaHora, Paciente paciente, Medico medico, Consultorio consultorio) {
+    public Consulta(String id, LocalDateTime fechaHora, Paciente paciente, Medico medico, Consultorio consultorio, Status status) {
         this.id = id;
         this.fechaHora = fechaHora;
         this.paciente = paciente;

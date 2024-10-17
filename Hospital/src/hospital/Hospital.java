@@ -181,19 +181,15 @@ public class Hospital {
             System.out.println("\nNo tiene consultas registradas.");
         } else {
             System.out.println("\n*** Consultas del Paciente ***");
-//            for (Consulta consulta : consultasPaciente) {
-//                System.out.println(consulta.mostrarInformacion());
-//            }
-            boolean existenConsultas = false;
-            for (Consulta consulta : this.listaConsultas) {
-                if(id.equals(consulta.getPaciente().getId()) && consulta.getStatus() == Status.PENDIENTE){
-                    existenConsultas = true;
-                    //Mostrar las consultas
-                    System.out.println(consulta.mostrarInformacion());
+            boolean existenConsultasPendientes = false;
+            for (Consulta consulta : consultasPaciente) {
+                System.out.println(consulta.mostrarInformacion());
+                if (consulta.getStatus() == Status.PENDIENTE) {
+                    existenConsultasPendientes = true;
                 }
             }
-            if(!existenConsultas){
-                System.out.println("No tienes consultas agendadas");
+            if (!existenConsultasPendientes) {
+                System.out.println("No tienes consultas pendientes.");
             }
         }
     }
